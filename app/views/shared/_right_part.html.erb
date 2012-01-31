@@ -1,14 +1,26 @@
 <% content_for(:right_part) do %>
 <div class="right-container">
    <div class="tweet">
-   Your Tweets(<%= current_user.tweets_count %>)
+   Your Tweets <b>(<%= current_user.tweets_count %>)</b> <br />
    <%= current_user.last_tweet.post if current_user.last_tweet %>
    </div>
    <div class="followers">
+    Followers <b>(<%= current_user.followers_count %>)</b> <br />
+    <% current_user.following_users.limit(4).each do |follower| %>
+         <%= link_to follower.username, user_path(follower) %>
+      <% end %>
    </div>
    <div class="following">
+     Following <b>(<%= current_user.follow_count %>)</b> <br />
+     <% current_user.follows.limit(4).each do |following| %>
+         <%= link_to following.username, user_path(following) %>
+      <% end %>
    </div>
    <div class="suggested-following">
-   <div>
+     Who to follow <br />
+     <% current_user.follower_suggestion.each do |suggestion| %>
+        <%= link_to suggestion.username, user_path(suggestion) %>
+     <% end %>
+   </div>
 </div>
 <% end %>

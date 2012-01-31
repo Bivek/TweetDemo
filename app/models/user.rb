@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
 
   def follower_suggestion
     currently_following_user_ids = self.followings.map{|follow| follow.followable_id}
-    self.where('id not in ?', currently_following_user_ids).order('random()').limit(4)
+    user_ids_to_exclude = [self.id] + currently_following_user_ids
+    User.where('id not in (?)', user_ids_to_exclude).order('random()').limit(4)
   end
 
   def last_tweet

@@ -80,3 +80,6 @@
       .new-tweet textarea {
         width: 550px;
       }
+      .right-container div {
+        min-height: 100px;
+      }
