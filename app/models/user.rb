@@ -15,6 +15,12 @@ class User < ActiveRecord::Base
     Tweet.where(:user_id => self.id)
   end
 
+  def timeline
+    current_user_as_well_as_following_users_id = [self.id]
+    self.followings.map{|follow|  current_user_as_well_as_following_users_id << follow.followable_id}
+    Tweet.where(:user_id => current_user_as_well_as_following_users_id).order('created_at desc').limit(30)
+  end
+
   def follower_suggestion
     currently_following_user_ids = self.followings.map{|follow| follow.followable_id}
     self.where('id not in ?', currently_following_user_ids).order('random()').limit(4)
