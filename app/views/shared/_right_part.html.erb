@@ -1,0 +1,14 @@
+<% content_for(:right_part) do %>
+<div class="right-container">
+   <div class="tweet">
+   Your Tweets(<%= current_user.tweets_count %>)
+   <%= current_user.last_tweet.post if current_user.last_tweet %>
+   </div>
+   <div class="followers">
+   </div>
+   <div class="following">
+   </div>
+   <div class="suggested-following">
+   <div>
+</div>
+<% end %>
