@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120131094449) do
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
-    t.text     "tweet"
+    t.string   "post"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

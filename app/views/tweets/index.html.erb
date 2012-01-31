@@ -1,0 +1,10 @@
+<%= render 'shared/right_part' %>
+<%= render 'form' %>
+
+<div class="tweets-container">
+  <ul>
+    <% @tweets.each do |tweet| %>
+      <li><%= tweet.post %></li>
+    <% end %>
+  </ul>
+</div>

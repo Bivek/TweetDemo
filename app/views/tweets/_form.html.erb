@@ -1,0 +1,6 @@
+<div class="new-tweet">
+  <h2>What's happening?</h2>
+  <%= form_for(@new_tweet) do |f| %>
+    <div><%= f.text_area :post, :rows => 3, :cols => 60 %></div>
+  <% end %>
+</div>
