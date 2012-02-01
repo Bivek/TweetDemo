@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Twitter</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Twitter</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
     <div class="topbar">
-        <div class="fill">
-          <div class="container">
-            <a class="brand" href="#">Twitter</a>
-            <div class="pull-right">
-              <ul>
-                <li><span>Hi, bikashp</span></li>
-                <li><a href="#about">log out</a></li>
-              </ul>
-            </div>
-
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">Twitter</a>
+          <%= render  'shared/header_links' %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p id="notice"><%= notice %></p>
+      <p id="alert"><%= alert %></p>
+      <div class="content">
+        <div class="row">
+          <div class="span10">
+            <%= yield %>
+          </div>
+          <div class="span4">
+            <%= yield  :right_part %>
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="content">
-          <div class="row">
-            <div class="span10">
-             <%= yield %>
-            </div>
-            <div class="span4">
-              <%= yield  :right_part %>
-            </div>
-          </div>
-        </div>
-         <footer>
-            <p>&copy; Company 2011</p>
-          </footer>
-      </div>
-
-</body>
+      <footer>
+        <p>&copy; Company 2012</p>
+      </footer>
+    </div>
+  </body>
 </html>
-
-

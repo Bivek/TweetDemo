@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
 
   validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
   validates_confirmation_of :password, :message => "should match confirmation", :if => :password
-
+  
+  #set username from email address
   before_create :set_username
+  
   has_many :tweets
 
   def recent_tweets
@@ -18,13 +20,13 @@ class User < ActiveRecord::Base
   def timeline
     current_user_as_well_as_following_users_id = [self.id]
     self.followings.map{|follow|  current_user_as_well_as_following_users_id << follow.followable_id}
-    Tweet.where(:user_id => current_user_as_well_as_following_users_id).order('created_at desc').limit(30)
+    Tweet.where(:user_id => current_user_as_well_as_following_users_id).order('created_at desc').limit(30).includes(:user)
   end
 
   def follower_suggestion
     currently_following_user_ids = self.followings.map{|follow| follow.followable_id}
     user_ids_to_exclude = [self.id] + currently_following_user_ids
-    User.where('id not in (?)', user_ids_to_exclude).order('random()').limit(4)
+    User.where('id not in (?)', user_ids_to_exclude).order('rand()').limit(4)
   end
 
   def last_tweet

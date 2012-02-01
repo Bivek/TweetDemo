@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_login_from_http_basic, :only => [:login_from_http_basic]
-  skip_before_filter :require_login, :only => [:index, :new, :create, :activate, :login_from_http_basic]
+  before_filter :check_if_logged_in
 
   def new
     @user = User.new
@@ -11,15 +10,13 @@ class UsersController < ApplicationController
     end
   end
 
-
-  # POST /users
-  # POST /users.xml
   def create
     @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(:users, :notice => 'Registration successfull.') }
+        auto_login(@user)
+        format.html { redirect_to(tweets_url, :notice => 'Registration successfull.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -27,6 +24,5 @@ class UsersController < ApplicationController
       end
     end
   end
-
 
 end

@@ -83,3 +83,22 @@
       .right-container div {
         min-height: 100px;
       }
+     .submit-button {
+    background: none repeat scroll 0 0 #F5F5F5;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    padding:5px;   
+}
+label{font-weight: bold;padding-right:10px;width:190px;}
+.submit-div{text-align:center;}
+.form{margin-top:25px;}
+.tweet-button{float:right; padding-right: 20px;}
+.tweets-container{padding-top:20px;}
+.tweet{}
+.tweet-img{float:left;}
+.tweet-username{font-weight: bold;}
+.tweet-text{}
+.tweeted-at{font-size:10px;}
+.even{background-color:#E3F1FA; margin-bottom: 15px;}
+.odd{margin-bottom: 15px;}
+.tweet-info{padding-left:15px; font-size:14px;}

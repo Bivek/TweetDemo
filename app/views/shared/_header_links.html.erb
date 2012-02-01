@@ -1,0 +1,11 @@
+<div class="pull-right">
+ <ul>
+  <% if current_user %> 
+    <li><span style="padding-top:20px;">Hi, <%=current_user.username %></span></li>
+    <li><span><%=link_to 'log out', logout_path %></span></li>
+  <% else %>
+    <li><span><%=link_to 'sign up', new_user_path %></span></li>
+    <li><span><%=link_to 'sign in',  new_user_session_path %></span></li>
+  <% end %>
+ </ul
+</div>

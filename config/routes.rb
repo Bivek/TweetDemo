@@ -2,6 +2,8 @@ Twitter::Application.routes.draw do
   resources :user_sessions
   resources :users
   resources :tweets
+  
+  get '/logout' => 'user_sessions#destroy', :as => 'logout'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,10 +1,22 @@
 <%= render 'shared/right_part' %>
 <%= render 'form' %>
-
+<br />
+<div class='clear'></div>
 <div class="tweets-container">
-  <ul>
-    <% @tweets.each do |tweet| %>
-      <li><%= tweet.post %></li>
-    <% end %>
-  </ul>
+  <% @tweets.each do |tweet| %>
+    <div class="tweet <%= cycle('even', 'odd') -%>">
+      <div class='tweet-img'></div>
+      <div class='tweet-info'>
+        <div class='tweet-username'>
+          <%= tweet.user.username %>
+        </div>
+        <div class='tweet-text'>
+          <%= tweet.post %>
+        </div>
+        <div class='tweeted-at'>
+          <%= time_ago_in_words(tweet.created_at) %> ago
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
