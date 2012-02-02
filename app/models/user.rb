@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   def timeline
     user_as_well_as_following_users_id = [self.id]
-    self.followings.map{|follow|  user_as_well_as_following_users_id << follow.followable_id}
+    self.following_users.map{|follow|  user_as_well_as_following_users_id << follow.id}
     Tweet.where(:user_id => user_as_well_as_following_users_id).order('created_at desc').limit(30).includes(:user)
   end
 
