@@ -1,0 +1,18 @@
+<%= render 'shared/right_part', :user => @user %>
+<div class="info-wrapper">
+<div class='tweet-img'>
+  <%= get_large_profile_pic(@user) %>
+</div>
+<div >
+  <h3><%= @user.username %></h3>
+</div>
+<div id='follow_unfollow'>
+  <% if current_user.following?(@user) %>
+    <%=link_to 'Unfollow', unfollow_user_path(@user), :class => 'submit-button', :remote => true %>
+  <% else %>
+    <%=link_to 'Follow', follow_user_path(@user), :class => 'submit-button', :remote => true %>
+  <% end %>
+</div>
+</div>
+<div class='clear'></div>
+<%=render 'tweets/tweets', :user => @user, :tweets => @tweets %>

@@ -8,8 +8,10 @@ gem 'rails', '3.1.3'
 gem 'sqlite3'
 gem 'sorcery'
 gem 'acts_as_follower'
-
-
+gem 'mysql2'
+gem 'execjs'
+gem 'therubyracer'
+gem 'paperclip'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

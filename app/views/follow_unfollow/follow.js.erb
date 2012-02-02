@@ -1,0 +1,4 @@
+<% unfollow_link = capture do %>
+ <%  link_to 'Unfollow', unfollow_user_path(@user_to_follow), :class => 'submit-button', :remote => true %>
+<%  end %>
+ $('#follow_unfollow').html('<%=escape_javascript unfollow_link -%>');
